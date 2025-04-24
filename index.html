@@ -26,6 +26,18 @@
       z-index: 1000;
       pointer-events: none;
     }
+    #quote::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      right: -30px;
+      bottom: -30px;
+      background: radial-gradient(circle at center, rgba(255,0,0,0.3), transparent);
+      z-index: -1;
+      border-radius: 20px;
+    }
+
     #quote {
       margin: 0;
       background-color: #fff;
@@ -42,6 +54,8 @@
       transition: all 0.4s ease;
     }
     #quote.show {
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.6), 0 0 45px rgba(255, 0, 0, 0.2);
+    
       opacity: 1;
       transform: translateY(0);
     }
@@ -61,7 +75,19 @@
       background-color: #cc0000;
     }
     @media (max-width: 600px) {
-      #quote {
+      #quote::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      right: -30px;
+      bottom: -30px;
+      background: radial-gradient(circle at center, rgba(255,0,0,0.3), transparent);
+      z-index: -1;
+      border-radius: 20px;
+    }
+
+    #quote {
         font-size: 18px;
         padding: 20px;
         margin: 20px;
@@ -78,7 +104,13 @@
     }
   </style>
 </head>
-<body>
+<body style="animation: fadeIn 1.2s ease-in;">
+    <style>
+      @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+    </style>
   <header>
     <img src="sense_logo.png" alt="SENSE logo" class="sense-logo">
   </header>
