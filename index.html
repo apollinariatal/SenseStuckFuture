@@ -115,7 +115,8 @@
     <img src="sense_logo.png" alt="SENSE logo" class="sense-logo">
   </header>
   <div id="quote">Нажми на кнопку, чтобы получить предсказание</div>
-  <button onclick="showRandomQuote()">Погрузиться в StackFuture</button>
+  <button id="getQuoteBtn" onclick="showRandomQuote()">Погрузиться в StackFuture</button>
+    <a id="telegramBtn" href="https://t.me/it_sense" target="_blank" style="display:none; margin-top:20px; padding:12px 28px; background:#fff; color:#151515; text-decoration:none; border-radius:10px; font-weight:600;">Присоединиться к нам в Telegram</a>
   <script>
     const phrases = [
       "Ты digital twin, только с характером.",
@@ -157,6 +158,23 @@
       void quoteEl.offsetWidth;
       quoteEl.classList.add('show');
     }
-  </script>
+  
+    if (localStorage.getItem('stackFuture-shown') === 'true') {
+      document.getElementById('getQuoteBtn').style.display = 'none';
+      document.getElementById('telegramBtn').style.display = 'inline-block';
+    }
+
+    function showRandomQuote() {
+      const quoteEl = document.getElementById('quote');
+      const randomIndex = Math.floor(Math.random() * phrases.length);
+      quoteEl.textContent = phrases[randomIndex];
+      quoteEl.classList.remove('show');
+      void quoteEl.offsetWidth;
+      quoteEl.classList.add('show');
+      localStorage.setItem('stackFuture-shown', 'true');
+      document.getElementById('getQuoteBtn').style.display = 'none';
+      document.getElementById('telegramBtn').style.display = 'inline-block';
+    }
+    </script>
 </body>
 </html>
